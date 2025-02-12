@@ -3,10 +3,6 @@
     "name": "ToDoList",
     "version": "1.0.0",
     "description": "ToDoList",
-    "icons": {
-        "48": "images/icon.jpg",
-        "128": "images/icon.jpg"
-    },
     "action": {
         "default_title": "...",
         "default_popup": "index.html"

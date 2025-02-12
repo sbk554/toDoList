@@ -34,8 +34,6 @@ document.addEventListener("DOMContentLoaded", () => {
         localStorage.setItem("list", JSON.stringify(listArray));
         document.getElementById("listAddText").value = "";
     });
-
-    listDel();
 });
 
 function listDel(){
@@ -81,7 +79,7 @@ function updateListDisplay() {
                     </div>
                     `;
     });
-    //<button class="listDel" onclick="listDel(${item.pk})">&#128465;</button>
+    
     document.getElementById("list-content").innerHTML = resultHtml;
     checkBoxYn();
     listDel();
