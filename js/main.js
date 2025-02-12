@@ -28,7 +28,7 @@ document.addEventListener("DOMContentLoaded", () => {
         };
 
         // 리스트에 새 항목 추가
-        listArray.push(list);
+        listArray.unshift(list);
 
         // localStorage에 저장
         localStorage.setItem("list", JSON.stringify(listArray));
@@ -79,7 +79,7 @@ function updateListDisplay() {
                     </div>
                     `;
     });
-    
+
     document.getElementById("list-content").innerHTML = resultHtml;
     checkBoxYn();
     listDel();
@@ -113,4 +113,13 @@ function checkBoxYn(){
             updateListDisplay();
         })
     });
+}
+
+function fetchData() {
+    fetch("data.json") // JSON 파일 불러오기
+        .then(response => response.json()) // JSON 변환
+        .then(data => {
+            document.getElementById("output").textContent = JSON.stringify(data, null, 4);
+        })
+        .catch(error => console.error("데이터 로드 오류:", error));
 }
