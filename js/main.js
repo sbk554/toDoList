@@ -18,6 +18,7 @@ document.addEventListener("DOMContentLoaded", () => {
         var getLocalSt = localStorage.getItem("list");
 
         // localStorage 값이 null이면 빈 배열로 초기화
+        //JSON 문자열에서 객체로 변환
         var listArray = getLocalSt ? JSON.parse(getLocalSt) : [];
 
         // 배열 길이를 pk 값으로 사용
@@ -27,10 +28,11 @@ document.addEventListener("DOMContentLoaded", () => {
             ck: "N"
         };
 
-        // 리스트에 새 항목 추가
+        // 배열 맨 앞에 추가
         listArray.unshift(list);
 
         // localStorage에 저장
+        // JSON 문자열로 변환
         localStorage.setItem("list", JSON.stringify(listArray));
         document.getElementById("listAddText").value = "";
     });
@@ -113,13 +115,4 @@ function checkBoxYn(){
             updateListDisplay();
         })
     });
-}
-
-function fetchData() {
-    fetch("data.json") // JSON 파일 불러오기
-        .then(response => response.json()) // JSON 변환
-        .then(data => {
-            document.getElementById("output").textContent = JSON.stringify(data, null, 4);
-        })
-        .catch(error => console.error("데이터 로드 오류:", error));
 }
