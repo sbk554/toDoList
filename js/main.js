@@ -1,4 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
+    document.getElementById("dateTime").value = getToday();
     updateListDisplay();
 
     document.querySelector("#modalAdd").addEventListener("click", function () {
@@ -25,7 +26,8 @@ document.addEventListener("DOMContentLoaded", () => {
         var list = {
             pk: listArray.length,
             title: listAddText,
-            ck: "N"
+            ck: "N",
+            date:getToday()
         };
 
         // 배열 맨 앞에 추가
@@ -36,7 +38,21 @@ document.addEventListener("DOMContentLoaded", () => {
         localStorage.setItem("list", JSON.stringify(listArray));
         document.getElementById("listAddText").value = "";
     });
+
+    document.getElementById("dateTime").addEventListener("change", function (envet) {
+        updateListDisplay()
+    })
 });
+
+//현재날짜 불러오기
+function getToday(){
+    var date = new Date();
+    var year = date.getFullYear();
+    var month = ("0" + (1 + date.getMonth())).slice(-2);
+    var day = ("0" + date.getDate()).slice(-2);
+
+    return year +"-"+ month +"-"+ day;
+}
 
 function listDel(){
     //list 제거
@@ -71,17 +87,19 @@ function updateListDisplay() {
     var resultHtml = "";
     // JSON 문자열을 배열로 변환
     var listArray = getLocalStList ? JSON.parse(getLocalStList) : [];
-
+    
     listArray.forEach(function(item) {
-        resultHtml += `
-                    <div class="list-item">
-                        <input type="checkbox" class="task-checkbox" value="${item.pk}" ${item.ck === "Y" ? "checked" : ""}/>
-                        <span style="text-decoration:${item.ck === "Y" ? "line-through" : "none"}">${item.title}</span>
-                        <button class="listDel" num="${item.pk}">&#128465;</button>
-                    </div>
-                    `;
+        if(item.date == document.getElementById("dateTime").value){
+            resultHtml += `
+                        <div class="list-item">
+                            <input type="checkbox" class="task-checkbox" value="${item.pk}" ${item.ck === "Y" ? "checked" : ""}/>
+                            <span style="text-decoration:${item.ck === "Y" ? "line-through" : "none"}">${item.title}</span>
+                            <button class="listDel" num="${item.pk}">&#128465;</button>
+                        </div>
+                        `;
+        }
     });
-
+    
     document.getElementById("list-content").innerHTML = resultHtml;
     checkBoxYn();
     listDel();

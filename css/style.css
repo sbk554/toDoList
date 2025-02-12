@@ -164,3 +164,24 @@ body {
 .list-add-wrap button:hover {
     background-color: #9a6ce5;
 }
+
+/* Date input styling */
+.date-wrap{
+    display: flex;
+    justify-content: center;
+}
+
+.list-wrap input[type="date"] {
+    width: 80%;
+    padding: 8px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    outline: none;
+    transition: border-color 0.3s;
+    margin: 10px 0;
+}
+
+.list-wrap input[type="date"]:focus {
+    border-color: #b084f7;
+}
