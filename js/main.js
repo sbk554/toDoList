@@ -35,6 +35,10 @@ document.addEventListener("DOMContentLoaded", () => {
         document.getElementById("listAddText").value = "";
     });
 
+    listDel();
+});
+
+function listDel(){
     //list 제거
     document.querySelectorAll(".listDel").forEach(function(item){
         item.addEventListener("click", function () {
@@ -58,7 +62,7 @@ document.addEventListener("DOMContentLoaded", () => {
             updateListDisplay();
         });
     })
-});
+}
 
 //list html 생성
 function updateListDisplay() {
@@ -80,6 +84,7 @@ function updateListDisplay() {
     //<button class="listDel" onclick="listDel(${item.pk})">&#128465;</button>
     document.getElementById("list-content").innerHTML = resultHtml;
     checkBoxYn();
+    listDel();
 };
 
 //checkBox 이벤트
