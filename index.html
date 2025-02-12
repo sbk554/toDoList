@@ -8,6 +8,27 @@
     <script src="js/main.js"></script>
 </head>
 <body>
-    
+    <div class="main-wrap">
+        <div class="main-content">
+            <div class="top-wrap">
+                <img src="images/ham.png" alt="Menu Icon">
+                <span>ToDoList</span>
+            </div>
+
+            <div class="list-add-wrap">
+                <div>
+                    <input type="text" id="listAddText"/>
+                    <button type="button" onclick="listAddSubmit()">추가</button>
+                    <button type="button" onclick="modalClose()">취소</button>
+                </div>
+            </div>
+
+            <div class="list-wrap">
+                <div class="list-content" id="list-content"></div>
+            </div>
+
+            <button class="new-task-button" type="button" onclick="modalAdd()">+ New task</button>
+        </div>
+    </div>
 </body>
 </html>

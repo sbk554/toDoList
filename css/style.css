@@ -1,0 +1,166 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #eef3ff;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* Main wrapper */
+.main-wrap {
+    width: 320px;
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    position: relative;
+}
+
+/* Top header styling */
+.top-wrap {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #b084f7;
+    padding: 12px;
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.top-wrap img {
+    width: 20px;
+    margin-right: 10px;
+    position: absolute;
+    left: 0;
+    margin-left: 10px;
+}
+
+/* Content styling */
+.list-content {
+    padding: 20px;
+}
+
+.list-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.list-item:last-child {
+    border-bottom: none;
+}
+
+.list-item span {
+    font-size: 16px;
+    color: #4a4a4a;
+}
+
+.list-item.completed span {
+    text-decoration: line-through;
+    color: #b0b0b0;
+}
+
+.list-item button {
+    background: none;
+    border: none;
+    color: #b084f7;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.task-checkbox {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 16px;
+    height: 16px;
+    border: 2px solid #b084f7;
+    border-radius: 50%;
+    cursor: pointer;
+    position: relative;
+    outline: none;
+    background-color: white;
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+.task-checkbox:checked {
+    background-color: #b084f7;
+    border-color: #b084f7;
+}
+
+.task-checkbox:checked::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 8px;
+    height: 8px;
+    background-color: white;
+    border-radius: 50%;
+}
+
+/* New task button */
+.new-task-button {
+    width: 100%;
+    margin-top: 20px;
+    background-color: #b084f7;
+    color: white;
+    padding: 10px;
+    font-size: 16px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    text-align: center;
+    transition: background-color 0.3s;
+}
+
+.new-task-button:hover {
+    background-color: #9a6ce5;
+}
+
+/* Add new task input styling */
+.list-add-wrap {
+    display: none;
+    padding: 15px;
+    background-color: #f9f9f9;
+    border-top: 1px solid #e0e0e0;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+}
+
+.list-add-wrap input#listAddText {
+    flex-grow: 1;
+    padding: 8px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    outline: none;
+    transition: border-color 0.3s;
+    width: 160px;
+}
+
+.list-add-wrap input#listAddText:focus {
+    border-color: #b084f7;
+}
+
+.list-add-wrap button {
+    background-color: #b084f7;
+    color: white;
+    padding: 8px 12px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s;
+}
+
+.list-add-wrap button:hover {
+    background-color: #9a6ce5;
+}
