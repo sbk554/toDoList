@@ -1,0 +1,20 @@
+{
+    "manifest_version": 3,
+    "name": "ToDoList",
+    "version": "1.0.0",
+    "description": "ToDoList",
+    "icons": {
+        "48": "images/icon.jpg",
+        "128": "images/icon.jpg"
+    },
+    "action": {
+        "default_title": "...",
+        "default_popup": "index.html"
+    },
+    "web_accessible_resources": [
+        {
+        "resources": ["js/main.js"],
+        "matches": ["<all_urls>"]
+        }
+    ]
+  }
