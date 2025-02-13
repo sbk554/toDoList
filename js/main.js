@@ -2,6 +2,29 @@ document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("dateTime").value = getToday();
     updateListDisplay();
 
+    var getLocalStList = localStorage.getItem("list");
+    var listArray = getLocalStList ? JSON.parse(getLocalStList) : [];
+
+    var modal = document.getElementById("modal");
+    var modalButton = document.getElementById("modalbtn");
+    var closeModal = document.getElementsByClassName("close")[0];
+    var dayBoxes = document.querySelectorAll('.day-box');
+    var dateGrid = document.querySelector('.date-grid');
+    var months = [
+        { name: 'January', days: 31 },
+        { name: 'February', days: 28 },
+        { name: 'March', days: 31 },
+        { name: 'April', days: 30 },
+        { name: 'May', days: 31 },
+        { name: 'June', days: 30 },
+        { name: 'July', days: 31 },
+        { name: 'August', days: 31 },
+        { name: 'September', days: 30 },
+        { name: 'October', days: 31 },
+        { name: 'November', days: 30 },
+        { name: 'December', days: 31 }
+    ];
+
     document.querySelector("#modalAdd").addEventListener("click", function () {
         document.querySelector(".list-wrap").setAttribute("style","display:none;")
         document.querySelector(".list-add-wrap").setAttribute("style","display:flex;")
@@ -41,6 +64,79 @@ document.addEventListener("DOMContentLoaded", () => {
 
     document.getElementById("dateTime").addEventListener("change", function (envet) {
         updateListDisplay()
+    })
+
+    //date-grid에 날짜박스 생성하기
+    var monthsContainer = document.createElement('div');
+    monthsContainer.classList.add('months-container');
+
+    months.forEach((month, monthIndex) => {
+        var monthSection = document.createElement('div');
+        monthSection.classList.add('month-section');
+        
+        var monthName = document.createElement('h3');
+        monthName.innerText = month.name;
+        monthSection.appendChild(monthName);
+
+        var monthGrid = document.createElement('div');
+        monthGrid.classList.add('month-grid');
+
+        var dayCounter = 1;
+        while (dayCounter <= month.days) {
+            var weekRow = document.createElement('div');
+            weekRow.classList.add('week-row');
+            
+            for (let i = 0; i < 7; i++) {
+                if (dayCounter <= month.days) {
+                    const dayBox = document.createElement('div');
+                    dayBox.classList.add('day-box');
+                    dayBox.dataset.date = `2025-${(monthIndex + 1).toString().padStart(2, '0')}-${dayCounter.toString().padStart(2, '0')}`;
+                    dayBox.innerText = dayCounter;
+                    weekRow.appendChild(dayBox);
+                    dayCounter++;
+
+                    listArray.forEach(function(item) {
+                        if(dayBox.dataset.date == item.date){
+                            dayBox.classList.add('has-task');
+                        }
+                    })
+                }
+            }
+            
+            monthGrid.appendChild(weekRow);
+        }
+
+        monthSection.appendChild(monthGrid);
+        monthsContainer.appendChild(monthSection);
+    });
+
+    dateGrid.appendChild(monthsContainer);
+
+    dayBoxes.forEach(dayBox => {
+        // 날짜에 정보가있으면 class 추가
+        dayBox.classList.toggle('has-task'); 
+    });
+
+    modalButton.onclick = function() {
+        modal.style.display = "flex";
+    }
+
+    closeModal.onclick = function() {
+        modal.style.display = "none";
+    }
+
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+    
+    document.querySelectorAll(".has-task").forEach(function(item){
+        item.addEventListener("click",function(event){
+            modal.style.display = "none";
+            document.getElementById("dateTime").value = item.getAttribute("data-date");
+            updateListDisplay()
+        })
     })
 });
 

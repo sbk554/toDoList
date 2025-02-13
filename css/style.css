@@ -185,3 +185,97 @@ body {
 .list-wrap input[type="date"]:focus {
     border-color: #b084f7;
 }
+
+/* Modal background */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Fixed position */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    background-color: rgba(0, 0, 0, 0.4); /* Black with opacity */
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+/* Modal content */
+.modal-content {
+    background-color: white;
+    border-radius: 12px;
+    padding: 20px;
+    width: 80%;
+    max-width: 400px;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+    position: relative;
+}
+
+/* Close button */
+.close {
+    color: #aaa;
+    font-size: 28px;
+    font-weight: bold;
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+    color: #b084f7;
+}
+
+.date-grid {
+    display: flex;
+    flex-direction: column; /* Stack months vertically */
+    gap: 20px;
+    margin-top: 20px;
+    height: 500px;
+    overflow-y: scroll;
+}
+
+.months-container {
+    display: flex;
+    flex-direction: column; /* Keep months in a vertical column */
+    gap: 30px; /* Space between months */
+}
+
+.month-section {
+    width: 250px; /* Set a fixed width for each month column */
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.month-grid {
+    display: flex;
+    flex-direction: column; /* Stack weeks vertically */
+    gap: 10px;
+}
+
+.week-row {
+    display: flex;
+    gap: 5px;  /* Space between each day box */
+    justify-content: flex-start; /* Align to the left */
+}
+
+.day-box {
+    width: 30px;
+    height: 30px;
+    background-color: #e0e0e0;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    cursor: pointer;
+}
+
+/* Example of a day with a task */
+.day-box.has-task {
+    background-color: #4caf50;
+    color: #fff;
+}

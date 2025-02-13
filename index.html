@@ -11,7 +11,8 @@
     <div class="main-wrap">
         <div class="main-content">
             <div class="top-wrap">
-                <span>ToDoList</span>
+                <img id="modalbtn" src="images/ham.png">
+                <span>오늘할 일</span>
             </div>
 
             <div class="list-add-wrap">
@@ -30,6 +31,16 @@
             </div>
 
             <button class="new-task-button" id="modalAdd" type="button">+ New task</button>
+        </div>
+
+        <div id="modal" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <div class="modal-header">
+                    <h2>Calender</h2>
+                </div>
+                <div class="date-grid"></div>
+            </div>
         </div>
     </div>
 </body>
