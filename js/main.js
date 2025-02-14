@@ -2,10 +2,24 @@ document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("dateTime").value = getToday();
     updateListDisplay();
 
+    document.querySelector("#modalAdd").addEventListener("click", function () {
+        document.querySelector(".list-wrap").setAttribute("style","display:none;")
+        document.querySelector(".list-add-wrap").setAttribute("style","display:flex;")
+    });
+
+    document.querySelector("#modalClose").addEventListener("click", function () {
+        document.querySelector(".list-wrap").setAttribute("style","display:block;")
+        document.querySelector(".list-add-wrap").setAttribute("style","display:none;")
+
+        updateListDisplay();
+
+        document.getElementById("listAddContent").innerHTML = "";
+    });
+
     document.querySelector("#listAddSubmit").addEventListener("click", function () {
         var listAddText = document.getElementById("listAddText").value;
         var getLocalSt = localStorage.getItem("list");
-
+        var dataValue = document.getElementById("dateTime").value;
         // localStorage 값이 null이면 빈 배열로 초기화
         //JSON 문자열에서 객체로 변환
         var listArray = getLocalSt ? JSON.parse(getLocalSt) : [];
@@ -15,7 +29,7 @@ document.addEventListener("DOMContentLoaded", () => {
             pk: listArray.length,
             title: listAddText,
             ck: "N",
-            date:getToday()
+            date:dataValue
         };
 
         // 배열 맨 앞에 추가
@@ -25,13 +39,28 @@ document.addEventListener("DOMContentLoaded", () => {
         // JSON 문자열로 변환
         localStorage.setItem("list", JSON.stringify(listArray));
         document.getElementById("listAddText").value = "";
+        document.getElementById("listAddContent").innerHTML += `
+                                                                <div style="display:flex; gap:10px;">
+                                                                    <a class="a-task-checkbox"></a>
+                                                                    <span>${list.title}</span>
+                                                                </div>`;
     });
 
-    document.getElementById("dateTime").addEventListener("change", function (envet) {
+    document.getElementById("dateTime").addEventListener("change", function () {
         updateListDisplay()
     })
-
+    // 1초마다 시간 업데이트
+    setInterval(updateTime, 1000);
+    updateTime();
 });
+
+function updateTime() {
+    const now = new Date();
+    const hours = String(now.getHours()).padStart(2, '0');
+    const minutes = String(now.getMinutes()).padStart(2, '0');
+    const seconds = String(now.getSeconds()).padStart(2, '0');
+    document.getElementById('time-div').innerHTML = `${hours}:${minutes}:${seconds}`;
+}
 
 //현재날짜 불러오기
 function getToday(){
@@ -148,17 +177,7 @@ function modalAdd(){
         { name: 'December', days: 31 }
     ];
 
-    document.querySelector("#modalAdd").addEventListener("click", function () {
-        document.querySelector(".list-wrap").setAttribute("style","display:none;")
-        document.querySelector(".list-add-wrap").setAttribute("style","display:flex;")
-    });
-
-    document.querySelector("#modalClose").addEventListener("click", function () {
-        document.querySelector(".list-wrap").setAttribute("style","display:block;")
-        document.querySelector(".list-add-wrap").setAttribute("style","display:none;")
-
-        updateListDisplay();
-    });
+    dateGrid.innerHTML = "";
 
     //date-grid에 날짜박스 생성하기
     var monthsContainer = document.createElement('div');

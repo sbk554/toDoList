@@ -8,58 +8,62 @@
     <script src="js/main.js"></script>
 </head>
 <body>
-    <div class="main-wrap">
-        <div class="main-content">
-            <div class="top-wrap">
-                <img id="modalbtn" src="images/ham.png">
-                <span>오늘할 일</span>
+    <section class="sec-wrap">
+        <div id="time-div" class="time-display"></div>
+        <div class="main-wrap">
+            <div class="main-content">
+                <div class="top-wrap">
+                    <img id="modalbtn" src="images/ham.png">
+                    <span>오늘할 일</span>
+                </div>
+
+                <div class="list-add-wrap">
+                    <div style="display: flex; gap: 10px;">
+                        <input type="text" id="listAddText"/>
+                        <button type="button" id="listAddSubmit">추가</button>
+                        <button type="button" id="modalClose">취소</button>
+                    </div>
+                    <div id="listAddContent"></div>
+                </div>
+
+                <div class="list-wrap">
+                    <div class="date-wrap">
+                        <input type="date" id="dateTime">
+                    </div>
+                    <div class="list-content" id="list-content"></div>
+                </div>
+
+                <button class="new-task-button" id="modalAdd" type="button">+ New task</button>
             </div>
 
-            <div class="list-add-wrap">
-                <div>
-                    <input type="text" id="listAddText"/>
-                    <button type="button" id="listAddSubmit">추가</button>
-                    <button type="button" id="modalClose">취소</button>
+            <div id="modal" class="modal">
+                <div class="modal-content">
+                    <span class="close">&times;</span>
+                    <div class="modal-header">
+                        <h2>Calender</h2>
+                    </div>
+                    <div class="date-grid"></div>
+                    <div class="background-wrap">
+                        <div class="background-content">
+                            <span>Basic</span>
+                            <a class="a-has-task"></a>
+                        </div>
+                        <div class="background-content">
+                            <span>1~2</span>
+                            <a class="a-has-task2"></a>
+                        </div>
+                        <div class="background-content">
+                            <span>3~4</span>
+                            <a class="a-has-task3"></a>
+                        </div>
+                        <div class="background-content">
+                            <span>5</span>
+                            <a class="a-has-task4"></a>
+                        </div>
+                    </div>
                 </div>
             </div>
-
-            <div class="list-wrap">
-                <div class="date-wrap">
-                    <input type="date" id="dateTime">
-                </div>
-                <div class="list-content" id="list-content"></div>
-            </div>
-
-            <button class="new-task-button" id="modalAdd" type="button">+ New task</button>
         </div>
-
-        <div id="modal" class="modal">
-            <div class="modal-content">
-                <span class="close">&times;</span>
-                <div class="modal-header">
-                    <h2>Calender</h2>
-                </div>
-                <div class="date-grid"></div>
-                <div class="background-wrap">
-                    <div class="background-content">
-                        <span>Basic</span>
-                        <a class="a-has-task"></a>
-                    </div>
-                    <div class="background-content">
-                        <span>1~2</span>
-                        <a class="a-has-task2"></a>
-                    </div>
-                    <div class="background-content">
-                        <span>3~4</span>
-                        <a class="a-has-task3"></a>
-                    </div>
-                    <div class="background-content">
-                        <span>5</span>
-                        <a class="a-has-task4"></a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+    </section>
 </body>
 </html>

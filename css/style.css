@@ -1,3 +1,8 @@
+@font-face {
+    font-family: 'DS-Digital';
+    src: url('../font/DS-DIGI.TTF') format('truetype');
+}
+
 body {
     font-family: Arial, sans-serif;
     background-color: #eef3ff;
@@ -7,6 +12,21 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
+}
+
+.sec-wrap{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.time-display {
+    font-size: 70px;
+    font-weight: bold;
+    color: #b084f7;
+    text-align: center;
+    margin-top: 10px;
+    font-family: 'DS-Digital', sans-serif;
 }
 
 /* Main wrapper */
@@ -131,6 +151,7 @@ body {
     justify-content: space-between;
     align-items: center;
     gap: 10px;
+    flex-direction: column;
 }
 
 .list-add-wrap input#listAddText {
@@ -157,10 +178,20 @@ body {
     cursor: pointer;
     font-size: 14px;
     transition: background-color 0.3s;
+    flex-shrink: 0;
 }
 
 .list-add-wrap button:hover {
     background-color: #9a6ce5;
+}
+
+#listAddContent{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 10px;
+    align-items: flex-start;
 }
 
 .date-wrap{
@@ -332,4 +363,19 @@ body {
     display: flex;
     gap: 10px;
     justify-content: flex-end;
+}
+
+.a-task-checkbox {
+    appearance: none;
+    -webkit-appearance: none;
+    display: block;
+    width: 16px;
+    height: 16px;
+    border: 2px solid #b084f7;
+    border-radius: 50%;
+    cursor: pointer;
+    position: relative;
+    outline: none;
+    background-color: white;
+    transition: background-color 0.3s, border-color 0.3s;
 }
