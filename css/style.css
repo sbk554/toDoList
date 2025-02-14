@@ -127,7 +127,6 @@ body {
 
 .new-task-button {
     width: 100%;
-    margin-top: 20px;
     background-color: #b084f7;
     color: white;
     padding: 10px;
@@ -141,6 +140,10 @@ body {
 
 .new-task-button:hover {
     background-color: #9a6ce5;
+}
+
+#historyBack{
+    display: none;
 }
 
 .list-add-wrap {
@@ -190,7 +193,7 @@ body {
     display: flex;
     flex-direction: column;
     gap: 10px;
-    margin-top: 10px;
+    margin: 20px 0;
     align-items: flex-start;
 }
 

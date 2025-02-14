@@ -3,13 +3,17 @@ document.addEventListener("DOMContentLoaded", () => {
     updateListDisplay();
 
     document.querySelector("#modalAdd").addEventListener("click", function () {
-        document.querySelector(".list-wrap").setAttribute("style","display:none;")
-        document.querySelector(".list-add-wrap").setAttribute("style","display:flex;")
+        document.querySelector(".list-wrap").setAttribute("style","display:none;");
+        document.querySelector(".list-add-wrap").setAttribute("style","display:flex;");
+        document.querySelector("#modalAdd").setAttribute("style","display:none;");
+        document.querySelector("#historyBack").setAttribute("style","display:block;");
     });
 
-    document.querySelector("#modalClose").addEventListener("click", function () {
-        document.querySelector(".list-wrap").setAttribute("style","display:block;")
-        document.querySelector(".list-add-wrap").setAttribute("style","display:none;")
+    document.querySelector("#historyBack").addEventListener("click", function () {
+        document.querySelector(".list-wrap").setAttribute("style","display:block;");
+        document.querySelector(".list-add-wrap").setAttribute("style","display:none;");
+        document.querySelector("#modalAdd").setAttribute("style","display:block;");
+        document.querySelector("#historyBack").setAttribute("style","display:none;");
 
         updateListDisplay();
 
