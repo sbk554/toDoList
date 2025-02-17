@@ -300,12 +300,12 @@ body {
     align-items: center;
     justify-content: center;
     font-size: 12px;
-    cursor: pointer;
 }
 
 .day-box.has-task {
     background-color: #9bd16c;
     color: #fff;
+    cursor: pointer;
 }
 
 .day-box.has-task2 {
